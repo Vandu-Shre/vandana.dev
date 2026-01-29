@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Fraunces", "DM Serif Display", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --color-charcoal: #29272A;
+  --color-plum: #704367;
+  --color-indigo: #493B66;
+  --color-mint: #b4e1d1;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased text-white bg-charcoal;
+  }
+
+  h1 {
+    @apply font-serif;
+    font-size: clamp(3.5rem, 8vw, 5.25rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  
+  h2 {
+    @apply font-serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    letter-spacing: -0.01em;
+  }
+  
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif;
+  }
+}
+
+/* Section Themes */
+.theme-charcoal {
+  background-color: var(--color-charcoal);
+  --section-text: #FFFFFF;
+  --section-muted: rgba(255, 255, 255, 0.7);
+  --section-border: rgba(255, 255, 255, 0.12);
+  --card-bg: rgba(255, 255, 255, 0.06);
+}
+
+.theme-plum {
+  background-color: var(--color-plum);
+  --section-text: #FFFFFF;
+  --section-muted: rgba(255, 255, 255, 0.7);
+  --section-border: rgba(255, 255, 255, 0.14);
+  --card-bg: rgba(255, 255, 255, 0.08);
+}
+
+.theme-indigo {
+  background-color: var(--color-indigo);
+  --section-text: #FFFFFF;
+  --section-muted: rgba(255, 255, 255, 0.7);
+  --section-border: rgba(255, 255, 255, 0.12);
+  --card-bg: rgba(255, 255, 255, 0.06);
+}
+
+.glass-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--section-border);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  @apply rounded-[24px] p-6 transition-all duration-300;
+}
+
+.glass-card:hover {
+  @apply -translate-y-1 shadow-2xl;
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+.pill {
+  @apply px-3 py-1 rounded-full text-xs font-medium border transition-colors;
+  border-color: var(--section-border);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.pill:hover {
+  border-color: var(--color-mint);
+  color: var(--color-mint);
+}
+
+/* Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card Hover Effects */
+.glass-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Scroll Progress Bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: var(--color-mint);
+  z-index: 100;
+  transition: width 0.1s ease-out;
+}
+
+/* Hero Background Graphic */
+.hero-graphic {
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  pointer-events: none;
+}
