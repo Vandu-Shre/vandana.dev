@@ -51,29 +51,35 @@ export const portfolioData = {
             name: "Synapse",
             featured: true,
             description: "Real-time collaborative whiteboard",
+            oneLiner: "Fast, multiplayer canvas with sub-100ms sync and scalable room routing.",
+            signalStrip: ["Realtime", "Multiplayer", "Canvas", "Deployed"],
             impact: [
-                "Built collaborative whiteboard with Next.js, TypeScript, Canvas API, and NestJS",
-                "Implemented real-time state sync via WebSockets; deployed on GCP"
+                "Shipped real-time canvas sync via WebSockets, delivering smooth multi-user interactions.",
+                "Implemented room-based isolation using dynamic routes for independent sessions."
             ],
-            roadmap: "Distributed persistence with Redis and PostgreSQL",
+            nextFeatures: ["Redis presence", "Live cursor", "Postgres persistence"],
             tech: ["Next.js", "TypeScript", "Canvas API", "NestJS", "WebSockets", "GCP"],
-            demoUrl: "https://synapse-demo.vandu.dev",
+            demoUrl: "https://synapse-web-411490677881.us-central1.run.app/",
             githubUrl: "https://github.com/Vandu-Shre/synapse",
-            videoUrl: null
+            videoUrl: null,
+            thumbnail: "/Synapse.png"
         },
         {
             name: "Recipe Book",
             featured: true,
-            description: "Full Stack MERN Application",
+            description: "Full Stack MERN application",
+            oneLiner: "Recipes, planning, pantry search, and secure authentication.",
+            signalStrip: ["Auth", "Search", "Planning", "MERN"],
             impact: [
-                "Developed full-stack recipe manager for recipes, weekly meal planning, and pantry-based search",
-                "Added JWT authentication and Tailwind CSS UI with React, Node.js, and MongoDB"
+                "Built recipe + pantry manager with JWT auth, clean UI, and intuitive workflows.",
+                "Added pantry-based search and weekly meal plans with fast MongoDB queries."
             ],
-            roadmap: "Intelligent, AI-driven pantry search via LLM integration",
+            nextFeatures: ["LLM pantry assistant", "Smart recommendations", "Better filters"],
             tech: ["React", "Node.js", "MongoDB", "JWT", "Tailwind CSS"],
-            demoUrl: "https://recipe-book.vandu.dev",
-            githubUrl: "https://github.com/Vandu-Shre/recipe-book",
-            videoUrl: "https://youtube.com/demo-recipe-book"
+            demoUrl: "https://recipe-api-frontend.netlify.app/",
+            githubUrl: "https://github.com/Vandu-Shre/recipe-app",
+            videoUrl: "https://youtube.com/demo-recipe-book",
+            thumbnail: "/Recipe-Book.png"
         }
     ],
     experience: [
@@ -81,27 +87,27 @@ export const portfolioData = {
             company: "Mobily",
             title: "Technology Lead",
             period: "Aug 2024 - May 2025",
-            impactLine: "Scale: 1M+ users, micro-frontends, Cloud Run",
+            scale: "1M+ users · Micro-frontends · Cloud Run",
+            summary: "Designed and delivered core micro-frontend foundations for a 1M+ user ecosystem.",
             bullets: [
-                "Architected and maintained a micro-frontend ecosystem serving over 1M+ users.",
-                "Built and standardized a shared component library with Storybook, reducing UI development time by 40%.",
-                "Developed a multilingual subscription platform on Cloud Run using Next.js SSR for optimal SEO.",
-                "Optimized backend APIs for high-volume orders and billing processing.",
-                "Delivered a Profile & Preferences portal with full RTL support and high accessibility standards."
+                "Built a modular micro-frontend platform powering the Devices Application.",
+                "Delivered real-time operational overlays using WebSockets for live order tracking.",
+                "Owned end-to-end GCP Cloud Run deployment for the multilingual Subscription Platform.",
+                "Translated complex product requirements into scalable, elegant engineering solutions."
             ],
             tech: ["Next.js", "React", "Cloud Run", "Storybook", "TypeScript"]
         },
         {
-            company: "EY",
+            company: "Ernst & Young (EY)",
             title: "Technology Consultant",
             period: "Aug 2022 - Jul 2024",
-            impactLine: "Real-time + Search + Dashboards, sub-100ms",
+            scale: "Real-time search · Sub-100ms sync · Global scale",
+            summary: "Built real-time journeys, dashboards, and scalable architecture for global commerce.",
             bullets: [
-                "Engineered 12 foundational user journeys for a global e-commerce client.",
-                "Led the modernization of legacy AngularJS applications to Angular 14+, improving maintainability.",
-                "Built a real-time auction app using WebSockets and Redis with sub-100ms state synchronization.",
-                "Implemented Algolia global search for sub-second query results across massive catalogs.",
-                "Designed performance-first analytics dashboards with complex data visualizations."
+                "Engineered a WebSocket + Redis auction app delivering sub-100ms interactions.",
+                "Implemented complex GraphQL-driven experiences for a global e-commerce platform.",
+                "Integrated AI services into insights dashboards with real-time visualization.",
+                "Delivered 12 core user journeys with high-performance frontend architecture."
             ],
             tech: ["Angular", "WebSockets", "Redis", "Algolia", "Node.js"]
         },
@@ -109,13 +115,13 @@ export const portfolioData = {
             company: "TCS",
             title: "Systems Engineer",
             period: "Jun 2019 - Jul 2022",
-            impactLine: "Retail tooling scaled to 1,700+ stores",
+            scale: "1,700+ retail stores · Global rollout",
+            summary: "Delivered production systems for retail operations across 1,700+ stores.",
             bullets: [
-                "Scaled a retail space planning tool across 1,700+ stores globally.",
-                "Developed core product catalog services using Node.js and MongoDB.",
-                "Implemented geolocation features for store locator maps using Google Maps API.",
-                "Built a rules-driven offers & promotions module to handle complex pricing logic.",
-                "Developed customer feedback & ratings workflows integrated with legacy systems."
+                "Built a 2D interactive space planning tool used in 1,700+ retail locations.",
+                "Developed Node.js + PostgreSQL backend services for the Product Catalog System.",
+                "Built map-based Store Locator interfaces with Google Maps integration.",
+                "Designed the Offers & Promotions rules engine for contextual experiences."
             ],
             tech: ["Node.js", "MongoDB", "React", "Express", "Google Maps API"]
         }
@@ -123,23 +129,79 @@ export const portfolioData = {
     skills: [
         {
             category: "Frontend",
-            context: "Built for dashboards, design systems, and scalable UI delivery.",
-            chips: ["React", "Angular", "Next.js", "TypeScript", "Redux", "Tailwind", "Storybook"]
+            description: "Interfaces, design systems, and real-time UI delivery.",
+            proficiency: {
+                core: [
+                    { name: "React", emoji: "⚛️" },
+                    { name: "TypeScript", emoji: "TS" },
+                    { name: "Next.js", emoji: "▲" }
+                ],
+                good: [
+                    { name: "Angular", emoji: "🔺" },
+                    { name: "Svelte", emoji: "🔥" },
+                    { name: "Tailwind", emoji: "🎨" },
+                    { name: "Redux", emoji: "🔄" }
+                ],
+                worked: [
+                    { name: "Storybook", emoji: "📚" },
+                    { name: "D3.js", emoji: "📊" }
+                ]
+            }
         },
         {
             category: "Backend",
-            context: "Real-time + APIs + scalable services.",
-            chips: ["Node.js", "Express", "NestJS", "REST", "GraphQL", "WebSockets"]
+            description: "Distributed APIs, WebSockets, and systems that scale.",
+            proficiency: {
+                core: [
+                    { name: "Node.js", emoji: "🌿" },
+                    { name: "NestJS", emoji: "🦅" },
+                    { name: "Express", emoji: "⚡" }
+                ],
+                good: [
+                    { name: "WebSockets", emoji: "🔌" },
+                    { name: "GraphQL", emoji: "◇" },
+                    { name: "REST", emoji: "🔗" }
+                ],
+                worked: [
+                    { name: "gRPC", emoji: "📡" }
+                ]
+            }
         },
         {
             category: "Database",
-            context: "Scale + storage.",
-            chips: ["PostgreSQL", "MongoDB", "Redis", "Prisma", "SQL optimization"]
+            description: "Production-grade persistence and query optimization.",
+            proficiency: {
+                core: [
+                    { name: "PostgreSQL", emoji: "🐘" },
+                    { name: "MongoDB", emoji: "🍃" },
+                    { name: "Redis", emoji: "🔴" }
+                ],
+                good: [
+                    { name: "Prisma", emoji: "⚙️" },
+                    { name: "Query optimization", emoji: "⚡" }
+                ],
+                worked: [
+                    { name: "Elasticsearch", emoji: "🔍" }
+                ]
+            }
         },
         {
             category: "Cloud/DevOps",
-            context: "Deployment + reliability.",
-            chips: ["Docker", "Kubernetes", "CI/CD", "GCP Cloud Run", "AWS Lambda/S3"]
+            description: "Containers, CI/CD, and cloud-native deployments.",
+            proficiency: {
+                core: [
+                    { name: "Docker", emoji: "🐳" },
+                    { name: "GCP Cloud Run", emoji: "☁️" },
+                    { name: "CI/CD", emoji: "🔄" }
+                ],
+                good: [
+                    { name: "Kubernetes", emoji: "☸️" },
+                    { name: "AWS", emoji: "📦" }
+                ],
+                worked: [
+                    { name: "Terraform", emoji: "🏗️" }
+                ]
+            }
         }
     ],
     pillars: [
