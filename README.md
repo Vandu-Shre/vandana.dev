@@ -1,42 +1,39 @@
-# sv
+# 🌐 Vandana.dev — Engineering Portfolio
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A modern, high-performance engineering portfolio showcasing **full-stack systems**, **real-time applications**, and **scalable architecture**.
 
-## Creating a project
+> **“I build UIs you notice — and backends that are resilient.”**
 
-If you're seeing this, you've probably already done this step. Congrats!
+---
 
-```sh
-# create a new project
-npx sv create my-app
-```
+## ✨ Overview
 
-To recreate this project with the same configuration:
+This is my personal engineering portfolio.  
+It highlights:
 
-```sh
-# recreate this project
-npx sv create --template minimal --types ts --no-install ./
-```
+- Real-world projects deployed at production scale
+- Experience across **frontend, backend, DevOps, and cloud systems**
+- Engineering pillars such as performance, real-time sync, scalable design, and clean architecture
+- A premium, minimal, fully responsive design
 
-## Developing
+Built to be fast, elegant, and expressive — without unnecessary complexity.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+🔗 **Live Site:** https://vandu-shre.github.io/vandana.dev/
 
-```sh
+---
+
+## 🛠️ Tech Stack
+
+- **Svelte**
+- **Tailwind CSS**
+- TypeScript
+- GitHub Pages (deployment)
+
+---
+
+## 🚀 Local Setup
+
+```bash
+npm install
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
-
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
