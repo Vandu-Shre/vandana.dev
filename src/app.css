@@ -27,10 +27,46 @@
   --font-sans: "Inter", system-ui, sans-serif;
   --font-display: "Poppins", system-ui, sans-serif;
 
+  /* Brand Colors */
   --color-charcoal: #29272A;
   --color-plum: #704367;
   --color-indigo: #493B66;
   --color-lavender-mist: #D9C4FF;
+  --color-periwinkle: #B9A7FF;
+
+  /* Semantic Colors */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+
+  /* Sizing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  --spacing-4xl: 6rem;
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+  /* Transitions */
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 500ms;
 }
 
 @layer base {
@@ -40,9 +76,14 @@
 
   body {
     @apply font-sans antialiased text-white bg-charcoal;
-    hyphens: none;
     -webkit-hyphens: none;
     -moz-hyphens: none;
+    hyphens: none;
+  }
+
+  /* Display contents utility for Svelte root wrapper */
+  #app {
+    display: contents;
   }
 
   h1 {

@@ -19,9 +19,11 @@
     children: any;
   } = $props();
 
-  const themeClass = `theme-${theme}`;
-  const glowClass = glow ? "has-glow" : "";
-  const paddingClass = noPadding ? "" : "px-6 md:px-12 lg:px-20 xl:px-28";
+  const themeClass = $derived(`theme-${theme}`);
+  const glowClass = $derived(glow ? "has-glow" : "");
+  const paddingClass = $derived(
+    noPadding ? "" : "px-6 md:px-12 lg:px-20 xl:px-28",
+  );
 </script>
 
 <section

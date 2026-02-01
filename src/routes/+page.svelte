@@ -1,25 +1,32 @@
 <script lang="ts">
+  import { cn } from "$lib/utils";
   import Header from "$lib/components/Header.svelte";
   import Section from "$lib/components/Section.svelte";
   import ProjectCard from "$lib/components/ProjectCard.svelte";
-  import ExperienceCard from "$lib/components/ExperienceCard.svelte";
   import ExperienceTimeline from "$lib/components/ExperienceTimeline.svelte";
-  import SkillGroup from "$lib/components/SkillGroup.svelte";
-  import PillarCard from "$lib/components/PillarCard.svelte";
   import Reveal from "$lib/components/Reveal.svelte";
   import ScrollProgress from "$lib/components/ScrollProgress.svelte";
   import { portfolioData } from "$lib/data";
-  import { Download } from "lucide-svelte";
-  import {
-    Github,
-    Linkedin,
-    Mail,
-    ExternalLink,
-    ArrowRight,
-    Video,
-  } from "lucide-svelte";
+  import { Download, Github, Linkedin, Mail, ArrowRight } from "lucide-svelte";
 
   let emailCopied = false;
+
+  // CTAs button classes
+  const heroCTAClasses = cn(
+    "inline-flex items-center gap-2.5 px-7 py-3.5 bg-[#D9C4FF]/90 text-charcoal font-semibold rounded-full",
+    "hover:scale-105 hover:bg-[#D9C4FF] active:scale-[0.98] focus-visible:outline focus-visible:outline-2",
+    "focus-visible:outline-offset-2 focus-visible:outline-[#D9C4FF]/50 transition-all shadow-lg shadow-[#D9C4FF]/10",
+    "relative overflow-hidden group squish-btn",
+  );
+
+  const downloadBtnClasses = cn(
+    "inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full border border-white/15",
+    "text-white/60 text-sm hover:border-[#D9C4FF]/40 hover:text-white active:scale-[0.98]",
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D9C4FF]/30",
+    "transition-all group",
+  );
+
+  const socialLinkClasses = cn("hover:text-[#D9C4FF] transition-colors");
 
   const copyEmail = async () => {
     try {
@@ -41,9 +48,9 @@
   <!-- Hero Section -->
   <Section
     id="top"
-    theme="plum"
-    glow={true}
-    vignette={0.75}
+    theme="plumDeep"
+    glow={false}
+    vignette={0.95}
     noPadding={true}
     customClass="h-[calc(100vh-80px)] overflow-hidden"
   >
@@ -77,50 +84,54 @@
           <!-- Main Headline -->
           <div class="relative z-10 py-6 md:py-8">
             <h1
-              class="hero-title font-display font-black text-3xl md:text-4xl lg:text-5xl text-white gap-1"
+              class="hero-title font-display font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white"
             >
-              <span
-                class="inline-block stagger-word"
-                style="animation-delay: 0ms">I</span
-              >
-              <span
-                class="inline-block stagger-word"
-                style="animation-delay: 20ms">build</span
-              >
-              <span
-                class="text-[#D9C4FF] font-black tracking-[0.01em] inline-block stagger-word"
-                style="animation-delay: 40ms">UIs</span
-              >
-              <span
-                class="text-[#D9C4FF] font-black tracking-[0.01em] inline-block stagger-word"
-                style="animation-delay: 60ms">you</span
-              >
-              <span
-                class="text-[#D9C4FF] font-black tracking-[0.01em] inline-block stagger-word"
-                style="animation-delay: 80ms">notice</span
-              ><br />
-              <span
-                class="inline-block stagger-word"
-                style="animation-delay: 100ms">and</span
-              >
-              <span
-                class="text-outline text-white inline-block stagger-word"
-                style="animation-delay: 120ms">backends</span
-              >
-              <span
-                class="text-outline text-white inline-block stagger-word"
-                style="animation-delay: 140ms">that</span
-              >
-              <span
-                class="text-outline text-white inline-block stagger-word whitespace-nowrap"
-                style="animation-delay: 160ms">are&nbsp;resilient.</span
-              >
+              <span class="block whitespace-nowrap">
+                <span
+                  class="inline-block stagger-word"
+                  style="animation-delay: 0ms">I</span
+                >
+                <span
+                  class="inline-block stagger-word"
+                  style="animation-delay: 20ms">build</span
+                >
+                <span
+                  class="text-[#D9C4FF] font-black tracking-[0.01em] inline-block stagger-word"
+                  style="animation-delay: 40ms">UIs</span
+                >
+                <span
+                  class="text-[#D9C4FF] font-black tracking-[0.01em] inline-block stagger-word"
+                  style="animation-delay: 60ms">you</span
+                >
+                <span
+                  class="text-[#D9C4FF] font-black tracking-[0.01em] inline-block stagger-word"
+                  style="animation-delay: 80ms">notice</span
+                >
+              </span>
+              <span class="block whitespace-nowrap">
+                <span
+                  class="inline-block stagger-word"
+                  style="animation-delay: 100ms">and</span
+                >
+                <span
+                  class="text-outline text-white inline-block stagger-word"
+                  style="animation-delay: 120ms">backends</span
+                >
+                <span
+                  class="text-outline text-white inline-block stagger-word"
+                  style="animation-delay: 140ms">that</span
+                >
+                <span
+                  class="text-outline text-white inline-block stagger-word"
+                  style="animation-delay: 160ms">are&nbsp;resilient.</span
+                >
+              </span>
             </h1>
           </div>
 
           <!-- Role Line -->
           <p
-            class="text-sm md:text-base text-white/40 font-medium relative z-10"
+            class="text-xs sm:text-sm md:text-base text-white/40 font-medium relative z-10 whitespace-nowrap"
           >
             Full-Stack Engineer · React · TypeScript · Node/NestJS · AWS/GCP
           </p>
@@ -147,10 +158,7 @@
 
           <!-- CTA Button -->
           <div class="relative z-10 pt-16 md:pt-20">
-            <a
-              href="#footer"
-              class="inline-flex items-center gap-2.5 px-7 py-3.5 bg-[#D9C4FF]/90 text-charcoal font-semibold rounded-full hover:scale-105 hover:bg-[#D9C4FF] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D9C4FF]/50 transition-all shadow-lg shadow-[#D9C4FF]/10 relative overflow-hidden group squish-btn"
-            >
+            <a href="#footer" class={heroCTAClasses}>
               <span class="relative">Let's Talk</span>
               <ArrowRight
                 size={16}
@@ -308,7 +316,7 @@
   </Section>
 
   <!-- Experience -->
-  <Section id="experience" theme="plumDeep" vignette={0.95}>
+  <Section id="experience" theme="indigo" vignette={0.85}>
     <div class="max-w-6xl mx-auto">
       <Reveal>
         <h2 class="text-4xl font-bold text-white mb-16">Work Experience</h2>
@@ -372,8 +380,10 @@
   </Section>
 
   <!-- Contact Section -->
-  <Section id="contact" theme="indigo" vignette={0.95}>
-    <div class="max-w-4xl mx-auto text-center relative">
+  <Section id="contact" theme="plumDeep" vignette={0.95}>
+    <div
+      class="max-w-4xl w-full mx-auto text-center relative flex flex-col items-center"
+    >
       <!-- Background Abstract Graphic -->
       <div
         class="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none"
@@ -392,12 +402,14 @@
       </div>
 
       <Reveal>
-        <h2 class="text-4xl font-bold text-white leading-tight tracking-tight">
+        <h2
+          class="text-3xl sm:text-4xl font-bold text-white leading-tight tracking-tight whitespace-nowrap"
+        >
           Let's build something that scales.
         </h2>
 
         <p
-          class="text-sm md:text-base text-white/60 font-medium relative z-10 mt-5"
+          class="text-xs sm:text-sm md:text-base text-white/60 font-medium relative z-10 mt-5 whitespace-nowrap"
         >
           Open to full-stack roles in Germany
         </p>
@@ -407,7 +419,7 @@
           <div class="flex items-center justify-center gap-6 text-white/55">
             <button
               type="button"
-              class="hover:text-[#D9C4FF] transition-colors"
+              class={socialLinkClasses}
               title="Copy email"
               on:click={copyEmail}
             >
@@ -417,7 +429,7 @@
               href="https://github.com/Vandu-Shre"
               target="_blank"
               rel="noopener noreferrer"
-              class="hover:text-[#D9C4FF] transition-colors"
+              class={socialLinkClasses}
               title="GitHub"
             >
               <Github class="w-5 h-5" />
@@ -426,7 +438,7 @@
               href="http://www.linkedin.com/in/vandanashree"
               target="_blank"
               rel="noopener noreferrer"
-              class="hover:text-[#D9C4FF] transition-colors"
+              class={socialLinkClasses}
               title="LinkedIn"
             >
               <Linkedin class="w-5 h-5" />
@@ -439,11 +451,7 @@
 
         <!-- Download Resume Button -->
         <div class="mt-8">
-          <a
-            href="/resume.pdf"
-            download
-            class="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full border border-white/15 text-white/60 text-sm hover:border-[#D9C4FF]/40 hover:text-white active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D9C4FF]/30 transition-all group"
-          >
+          <a href="/resume.pdf" download class={downloadBtnClasses}>
             <Download
               size={16}
               class="transition-transform group-hover:translate-y-0.5"
@@ -453,7 +461,9 @@
         </div>
 
         <!-- Personal Signature -->
-        <p class="text-sm text-white/40 font-medium mt-12">
+        <p
+          class="text-xs sm:text-sm text-white/40 font-medium mt-12 whitespace-nowrap"
+        >
           Made with ❤️ and too much coffee. Thanks for stopping by 👋
         </p>
       </Reveal>
@@ -463,7 +473,7 @@
 
 <footer
   id="footer"
-  class="py-12 px-6 text-center"
+  class="py-8 px-6 text-center"
   style="background: linear-gradient(to top, #0b0b0e, #16121a); border-top: 1px solid rgba(255,255,255,0.06);"
 >
   <p class="text-white/20 text-xs font-medium tracking-[0.3em] uppercase">
