@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { base } from "$app/paths";
   import { ExternalLink, Github, Youtube } from "lucide-svelte";
 
   let { project } = $props();
@@ -21,7 +22,7 @@
           class="shrink-0 w-20 h-20 rounded-lg overflow-hidden opacity-60 group-hover:opacity-80 transition-opacity"
         >
           <img
-            src={project.thumbnail}
+            src={`${base}${project.thumbnail}`}
             alt="{project.name} preview"
             class="w-full h-full object-cover"
           />
