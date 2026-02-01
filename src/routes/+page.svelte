@@ -9,6 +9,7 @@
   import Reveal from "$lib/components/Reveal.svelte";
   import ScrollProgress from "$lib/components/ScrollProgress.svelte";
   import { portfolioData } from "$lib/data";
+  import { Download } from "lucide-svelte";
   import {
     Github,
     Linkedin,
@@ -17,6 +18,20 @@
     ArrowRight,
     Video,
   } from "lucide-svelte";
+
+  let emailCopied = false;
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText("shree.vandu@gmail.com");
+      emailCopied = true;
+      setTimeout(() => {
+        emailCopied = false;
+      }, 1600);
+    } catch (err) {
+      emailCopied = false;
+    }
+  };
 </script>
 
 <ScrollProgress />
@@ -27,41 +42,42 @@
   <Section
     id="top"
     theme="plum"
+    glow={true}
+    vignette={0.75}
     noPadding={true}
-    customClass="h-[100svh] min-h-screen"
+    customClass="h-[calc(100vh-80px)] overflow-hidden"
   >
     {#snippet background()}
       <!-- Designer Background with Radial Gradients -->
-      <div class="hero-bg"></div>
+      <div class="hero-bg" style="opacity: 0.6; filter: blur(1px);"></div>
     {/snippet}
 
     <div
-      class="max-w-5xl mx-auto h-full flex flex-col justify-center relative z-10 px-6"
+      class="max-w-4xl mx-auto h-full flex items-center justify-center relative z-10 px-6"
     >
       <Reveal>
-        <div class="space-y-6 text-center relative">
+        <div class="hero-stack relative">
           <!-- Radial Spotlights behind headline -->
           <div class="absolute inset-0 pointer-events-none overflow-hidden">
             <div
-              class="absolute top-[15%] left-1/2 -translate-x-1/2 w-[500px] h-[200px] bg-[#D9C4FF]/[0.08] blur-[100px] rounded-full"
-            ></div>
-            <div
-              class="absolute top-[30%] left-1/2 -translate-x-1/2 w-[400px] h-[150px] bg-plum/[0.12] blur-[80px] rounded-full"
+              class="absolute top-[15%] left-1/2 -translate-x-1/2 w-[500px] h-[200px] bg-[#D9C4FF]/[0.04] blur-[100px] rounded-full"
             ></div>
           </div>
 
           <!-- Intro Line -->
-          <p
-            class="text-sm md:text-base tracking-[0.2em] uppercase text-white/70 mb-10 flex items-center justify-center gap-3 relative z-10"
-          >
-            <span class="text-[#D9C4FF] shimmer">✦</span>
-            <span>Hi, I'm Vandana</span>
-          </p>
+          <div class="relative z-10 pt-8 md:pt-12">
+            <p
+              class="text-sm md:text-base tracking-[0.2em] uppercase text-white/70 flex items-center justify-center gap-3"
+            >
+              <span class="text-[#D9C4FF] shimmer">✦</span>
+              <span>Hi, I'm Vandana</span>
+            </p>
+          </div>
 
           <!-- Main Headline -->
-          <div class="relative z-10">
+          <div class="relative z-10 py-6 md:py-8">
             <h1
-              class="font-display font-black text-4xl md:text-5xl lg:text-6xl leading-[1.05] md:leading-[1.12] text-white mb-10 tracking-[-0.01em]"
+              class="hero-title font-display font-black text-3xl md:text-4xl lg:text-5xl text-white gap-1"
             >
               <span
                 class="inline-block stagger-word"
@@ -82,84 +98,64 @@
               <span
                 class="text-[#D9C4FF] font-black tracking-[0.01em] inline-block stagger-word"
                 style="animation-delay: 80ms">notice</span
-              >
-              <span
-                class="inline-block stagger-word"
-                style="animation-delay: 100ms">—</span
               ><br />
               <span
                 class="inline-block stagger-word"
-                style="animation-delay: 120ms">and</span
+                style="animation-delay: 100ms">and</span
               >
               <span
-                class="text-outline text-[#FFF2FF] tracking-[-0.01em] inline-block stagger-word"
-                style="animation-delay: 140ms">backends</span
+                class="text-outline text-white inline-block stagger-word"
+                style="animation-delay: 120ms">backends</span
               >
               <span
-                class="text-outline text-[#FFF2FF] tracking-[-0.01em] inline-block stagger-word"
-                style="animation-delay: 160ms">you</span
+                class="text-outline text-white inline-block stagger-word"
+                style="animation-delay: 140ms">that</span
               >
               <span
-                class="text-outline text-[#FFF2FF] tracking-[-0.01em] inline-block stagger-word"
-                style="animation-delay: 180ms">never</span
-              >
-              <span
-                class="text-outline text-[#FFF2FF] tracking-[-0.01em] inline-block stagger-word"
-                style="animation-delay: 200ms">need&nbsp;to.</span
+                class="text-outline text-white inline-block stagger-word whitespace-nowrap"
+                style="animation-delay: 160ms">are&nbsp;resilient.</span
               >
             </h1>
           </div>
 
-          <!-- Micro Tagline -->
+          <!-- Role Line -->
           <p
-            class="text-xs text-white/50 uppercase tracking-[0.3em] font-bold relative z-10"
+            class="text-sm md:text-base text-white/40 font-medium relative z-10"
           >
-            Interfaces with personality. Infrastructure with discipline.
+            Full-Stack Engineer · React · TypeScript · Node/NestJS · AWS/GCP
           </p>
 
-          <!-- Proof Strip -->
-          <div
-            class="flex flex-col sm:flex-row items-center justify-center gap-8 pt-8 px-4 relative z-10"
-          >
-            <div class="flex items-center gap-2">
-              <span class="text-2xl font-black text-[#D9C4FF]">1M+</span>
-              <span class="text-sm text-white/80">users (Mobily)</span>
-            </div>
-            <div class="w-px h-6 bg-white/20"></div>
-            <div class="flex items-center gap-2">
-              <span class="text-2xl font-black text-[#D9C4FF]">&lt;100ms</span>
-              <span class="text-sm text-white/80">real-time sync (EY)</span>
-            </div>
-            <div class="w-px h-6 bg-white/20"></div>
-            <div class="flex items-center gap-2">
-              <span class="text-2xl font-black text-[#D9C4FF]">1,700+</span>
-              <span class="text-sm text-white/80">stores (TCS)</span>
+          <p class="text-xs text-white/45 font-medium tracking-wide">
+            Open to full-time roles · Germany
+          </p>
+
+          <!-- Proof Strip (Quiet) -->
+          <div class="relative z-10 mt-2">
+            <div
+              class="flex items-center justify-center gap-2 text-xs opacity-55"
+            >
+              <span class="font-bold text-[#D9C4FF]">1M+</span>
+              <span class="text-white/60">users</span>
+              <span class="text-white/30 mx-1">|</span>
+              <span class="font-bold text-[#D9C4FF]">&lt;100ms</span>
+              <span class="text-white/60">sync</span>
+              <span class="text-white/30 mx-1">|</span>
+              <span class="font-bold text-[#D9C4FF]">1,700+</span>
+              <span class="text-white/60">stores</span>
             </div>
           </div>
 
-          <!-- Status Line -->
-          <p
-            class="text-xs text-white/50 uppercase tracking-[0.2em] pt-6 relative z-10"
-          >
-            Based in Germany
-          </p>
-
-          <!-- CTA Button with Glossy Effect -->
-          <div class="pt-10 relative z-10">
+          <!-- CTA Button -->
+          <div class="relative z-10 pt-16 md:pt-20">
             <a
               href="#footer"
-              class="inline-flex items-center gap-3 px-8 py-4 bg-[#D9C4FF] text-charcoal font-bold rounded-full hover:scale-105 hover:shadow-2xl transition-all shadow-lg shadow-[#D9C4FF]/20 relative overflow-hidden group squish-btn"
+              class="inline-flex items-center gap-2.5 px-7 py-3.5 bg-[#D9C4FF]/90 text-charcoal font-semibold rounded-full hover:scale-105 hover:bg-[#D9C4FF] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D9C4FF]/50 transition-all shadow-lg shadow-[#D9C4FF]/10 relative overflow-hidden group squish-btn"
             >
-              <!-- Glossy top highlight -->
-              <span
-                class="absolute top-0 left-1/4 w-24 h-2 bg-white/40 rounded-full blur-md"
-              ></span>
-              <!-- Inner shadow for depth -->
-              <span
-                class="absolute inset-0 rounded-full shadow-[inset_0_-2px_8px_rgba(0,0,0,0.15)]"
-              ></span>
               <span class="relative">Let's Talk</span>
-              <ArrowRight size={18} class="relative" />
+              <ArrowRight
+                size={16}
+                class="relative transition-transform group-hover:translate-x-0.5"
+              />
             </a>
           </div>
         </div>
@@ -168,7 +164,7 @@
   </Section>
 
   <!-- Projects Grid -->
-  <Section id="projects" theme="indigo">
+  <Section id="projects" theme="indigo" vignette={0.85}>
     <div class="max-w-6xl mx-auto">
       <Reveal>
         <div class="mb-16">
@@ -186,12 +182,14 @@
   </Section>
 
   <!-- Technical Skills -->
-  <Section id="skills" theme="charcoal">
-    <div class="max-w-6xl mx-auto">
+  <Section id="skills" theme="charcoal" vignette={0.92}>
+    <div class="max-w-6xl mx-auto relative">
       <Reveal>
-        <h2 class="font-bold text-white mb-24">The Tech Palette I Work With</h2>
+        <h2 class="text-4xl font-bold text-white mb-16 relative z-10">
+          The Tech Palette I Work With
+        </h2>
       </Reveal>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
         {#each portfolioData.skills as skill}
           <Reveal>
             <div
@@ -204,7 +202,7 @@
 
               <!-- Subtle geometric background -->
               <div
-                class="absolute inset-0 opacity-[0.05] group-hover:opacity-[0.08] transition-opacity pointer-events-none"
+                class="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity pointer-events-none"
               >
                 <svg
                   class="w-full h-full"
@@ -217,30 +215,14 @@
                     cy="50"
                     r="40"
                     stroke="white"
-                    stroke-width="0.5"
+                    stroke-width="0.3"
                   />
                   <circle
                     cx="50"
                     cy="50"
                     r="25"
                     stroke="white"
-                    stroke-width="0.5"
-                  />
-                  <line
-                    x1="50"
-                    y1="10"
-                    x2="50"
-                    y2="90"
-                    stroke="white"
-                    stroke-width="0.5"
-                  />
-                  <line
-                    x1="10"
-                    y1="50"
-                    x2="90"
-                    y2="50"
-                    stroke="white"
-                    stroke-width="0.5"
+                    stroke-width="0.3"
                   />
                 </svg>
               </div>
@@ -259,16 +241,17 @@
                 {#if skill.proficiency.core && skill.proficiency.core.length > 0}
                   <div class="mb-6 mt-4">
                     <p
-                      class="text-xs uppercase tracking-wider text-white/60 font-bold mb-3"
+                      class="text-xs uppercase tracking-wider text-white/70 font-bold mb-3"
                     >
                       ⭐ Core
                     </p>
-                    <div class="flex flex-wrap gap-2">
+                    <div class="flex flex-wrap gap-2.5">
                       {#each skill.proficiency.core as tech}
                         <span
-                          class="px-3 py-2 bg-[#D9C4FF]/15 border border-[#D9C4FF]/40 rounded-full text-xs font-bold text-[#D9C4FF] hover:bg-[#D9C4FF]/25 transition-all"
+                          class="px-4 py-2.5 bg-[#D9C4FF]/15 border border-[#D9C4FF]/40 rounded-full text-sm font-bold text-[#D9C4FF] hover:bg-[#D9C4FF]/25 transition-all"
                         >
-                          <span class="mr-1">{tech.emoji}</span>{tech.name}
+                          <span class="mr-1.5 text-base">{tech.emoji}</span
+                          >{tech.name}
                         </span>
                       {/each}
                     </div>
@@ -286,9 +269,10 @@
                     <div class="flex flex-wrap gap-2">
                       {#each skill.proficiency.good as tech}
                         <span
-                          class="px-3 py-2 bg-white/10 border border-white/20 rounded-full text-xs font-bold text-white/80 hover:text-white hover:border-white/30 transition-all"
+                          class="px-3 py-2 bg-white/10 border border-white/20 rounded-full text-xs font-semibold text-white/85 hover:text-white hover:border-white/30 transition-all"
                         >
-                          <span class="mr-1">{tech.emoji}</span>{tech.name}
+                          <span class="mr-1 text-sm">{tech.emoji}</span
+                          >{tech.name}
                         </span>
                       {/each}
                     </div>
@@ -297,18 +281,19 @@
 
                 <!-- Worked With Skills -->
                 {#if skill.proficiency.worked && skill.proficiency.worked.length > 0}
-                  <div class="mt-6">
+                  <div class="mt-6 opacity-75">
                     <p
-                      class="text-xs uppercase tracking-wider text-white/60 font-bold mb-3"
+                      class="text-[10px] uppercase tracking-wider text-white/50 font-bold mb-2"
                     >
                       🧰 Worked with
                     </p>
-                    <div class="flex flex-wrap gap-2">
+                    <div class="flex flex-wrap gap-1.5">
                       {#each skill.proficiency.worked as tech}
                         <span
-                          class="px-3 py-2 bg-white/8 border border-white/15 rounded-full text-xs font-bold text-white/70 hover:text-white/90 hover:border-white/25 transition-all"
+                          class="px-2.5 py-1.5 bg-white/5 border border-white/10 rounded-full text-[11px] font-medium text-white/60 hover:text-white/80 hover:border-white/20 transition-all"
                         >
-                          <span class="mr-1">{tech.emoji}</span>{tech.name}
+                          <span class="mr-1 text-xs">{tech.emoji}</span
+                          >{tech.name}
                         </span>
                       {/each}
                     </div>
@@ -323,10 +308,10 @@
   </Section>
 
   <!-- Experience -->
-  <Section id="experience" theme="indigo">
+  <Section id="experience" theme="plumDeep" vignette={0.95}>
     <div class="max-w-6xl mx-auto">
       <Reveal>
-        <h2 class="font-bold text-white mb-24">Work Experience</h2>
+        <h2 class="text-4xl font-bold text-white mb-16">Work Experience</h2>
       </Reveal>
       <div class="space-y-16">
         {#each portfolioData.experience as exp}
@@ -339,10 +324,10 @@
   </Section>
 
   <!-- Engineering Pillars -->
-  <Section id="pillars" theme="charcoal">
+  <Section id="pillars" theme="charcoal" vignette={0.92}>
     <div class="max-w-6xl mx-auto">
       <Reveal>
-        <h2 class="font-bold text-white mb-24">Engineering Pillars</h2>
+        <h2 class="text-4xl font-bold text-white mb-16">Engineering Pillars</h2>
       </Reveal>
       <div class="grid md:grid-cols-2 gap-8">
         {#each portfolioData.pillars as pillar, index}
@@ -387,11 +372,12 @@
   </Section>
 
   <!-- Contact Section -->
-  <Section id="contact" theme="plum">
+  <Section id="contact" theme="indigo" vignette={0.95}>
     <div class="max-w-4xl mx-auto text-center relative">
       <!-- Background Abstract Graphic -->
       <div
-        class="absolute inset-0 flex items-center justify-center opacity-[0.08] pointer-events-none"
+        class="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none"
+        style="filter: blur(2px);"
       >
         <svg
           width="400"
@@ -402,69 +388,68 @@
         >
           <circle cx="200" cy="200" r="150" stroke="white" stroke-width="1" />
           <circle cx="200" cy="200" r="100" stroke="white" stroke-width="1" />
-          <circle cx="200" cy="200" r="50" stroke="white" stroke-width="1" />
-          <line
-            x1="200"
-            y1="50"
-            x2="200"
-            y2="350"
-            stroke="white"
-            stroke-width="1"
-          />
-          <line
-            x1="50"
-            y1="200"
-            x2="350"
-            y2="200"
-            stroke="white"
-            stroke-width="1"
-          />
         </svg>
       </div>
 
       <Reveal>
-        <h2
-          class="text-5xl md:text-6xl font-bold text-white mb-8 leading-tight"
-        >
-          Let's create systems that scale<br />and experiences that shine.
+        <h2 class="text-4xl font-bold text-white leading-tight tracking-tight">
+          Let's build something that scales.
         </h2>
-        <p class="text-xl text-white/70 mb-12 max-w-2xl mx-auto">
-          Open to full-time roles in full-stack engineering, distributed
-          systems, and AI-powered products.
+
+        <p
+          class="text-sm md:text-base text-white/60 font-medium relative z-10 mt-5"
+        >
+          Open to full-stack roles in Germany
         </p>
 
-        <!-- Separator -->
-        <div class="h-px bg-white/10 w-24 mx-auto my-10"></div>
-
-        <!-- Social Links as Pills -->
-        <div class="flex flex-col items-center justify-center gap-4 mb-12">
-          <div class="flex gap-3 flex-wrap justify-center">
+        <!-- Social Icons with Email -->
+        <div class="mt-12 flex flex-col items-center justify-center gap-3">
+          <div class="flex items-center justify-center gap-6 text-white/55">
             <button
-              onclick={() =>
-                navigator.clipboard
-                  .writeText(portfolioData.email)
-                  .then(() => alert("Email copied to clipboard!"))}
-              class="px-4 py-2 border border-white/20 rounded-full text-white/70 hover:border-[#D9C4FF] hover:text-[#D9C4FF] hover:bg-[#D9C4FF]/10 transition-all text-sm font-bold uppercase tracking-widest cursor-pointer"
+              type="button"
+              class="hover:text-[#D9C4FF] transition-colors"
+              title="Copy email"
+              on:click={copyEmail}
             >
-              Email
+              <Mail class="w-5 h-5" />
             </button>
             <a
               href="https://github.com/Vandu-Shre"
               target="_blank"
               rel="noopener noreferrer"
-              class="px-4 py-2 border border-white/20 rounded-full text-white/70 hover:border-[#D9C4FF] hover:text-[#D9C4FF] hover:bg-[#D9C4FF]/10 transition-all text-sm font-bold uppercase tracking-widest"
+              class="hover:text-[#D9C4FF] transition-colors"
+              title="GitHub"
             >
-              GitHub
+              <Github class="w-5 h-5" />
             </a>
             <a
               href="http://www.linkedin.com/in/vandanashree"
               target="_blank"
               rel="noopener noreferrer"
-              class="px-4 py-2 border border-white/20 rounded-full text-white/70 hover:border-[#D9C4FF] hover:text-[#D9C4FF] hover:bg-[#D9C4FF]/10 transition-all text-sm font-bold uppercase tracking-widest"
+              class="hover:text-[#D9C4FF] transition-colors"
+              title="LinkedIn"
             >
-              LinkedIn
+              <Linkedin class="w-5 h-5" />
             </a>
           </div>
+          <span class="text-[11px] text-white/45 h-4">
+            {emailCopied ? "Copied" : ""}
+          </span>
+        </div>
+
+        <!-- Download Resume Button -->
+        <div class="mt-8">
+          <a
+            href="/resume.pdf"
+            download
+            class="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full border border-white/15 text-white/60 text-sm hover:border-[#D9C4FF]/40 hover:text-white active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D9C4FF]/30 transition-all group"
+          >
+            <Download
+              size={16}
+              class="transition-transform group-hover:translate-y-0.5"
+            />
+            <span>Download resume</span>
+          </a>
         </div>
 
         <!-- Personal Signature -->
@@ -476,8 +461,12 @@
   </Section>
 </main>
 
-<footer id="footer" class="bg-charcoal py-12 px-6 text-center">
-  <p class="text-white/30 text-xs font-medium tracking-[0.3em] uppercase">
-    © {new Date().getFullYear()} Vandana — running in production since 2019
+<footer
+  id="footer"
+  class="py-12 px-6 text-center"
+  style="background: linear-gradient(to top, #0b0b0e, #16121a); border-top: 1px solid rgba(255,255,255,0.06);"
+>
+  <p class="text-white/20 text-xs font-medium tracking-[0.3em] uppercase">
+    © {new Date().getFullYear()} Vandana · Running in production since 2019
   </p>
 </footer>

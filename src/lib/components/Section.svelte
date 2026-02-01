@@ -2,6 +2,8 @@
   let {
     id,
     theme = "plum",
+    glow = false,
+    vignette = 0.85,
     noPadding = false,
     customClass = "",
     background,
@@ -9,22 +11,23 @@
   }: {
     id: string;
     theme?: string;
+    glow?: boolean;
+    vignette?: number;
     noPadding?: boolean;
     customClass?: string;
     background?: any;
     children: any;
   } = $props();
+
+  const themeClass = `theme-${theme}`;
+  const glowClass = glow ? "has-glow" : "";
+  const paddingClass = noPadding ? "" : "px-6 md:px-12 lg:px-20 xl:px-28";
 </script>
 
 <section
   {id}
-  class="theme-{theme}
-         {noPadding ? '' : 'py-20 md:py-30 lg:py-40'}
-         px-6 md:px-12 lg:px-20 xl:px-28
-         flex flex-col justify-center
-         relative overflow-hidden
-         transition-colors duration-700
-         {customClass}"
+  class="{themeClass} {glowClass} flex flex-col justify-center relative {paddingClass} {customClass}"
+  style="--vignette: {vignette}"
 >
   {#if background}
     {@render background()}

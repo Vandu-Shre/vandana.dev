@@ -61,10 +61,10 @@
     </div>
 
     <!-- Impact Bullets (max 2) -->
-    <div class="space-y-2.5 mb-5">
-      {#each project.impact as bullet}
-        <div class="flex items-start gap-3 text-sm text-white">
-          <span class="mt-1 w-1 h-1 rounded-full bg-[#D9C4FF] shrink-0"></span>
+    <div class="space-y-4 mb-5">
+      {#each project.impact as bullet, index}
+        <div class="flex items-start gap-3 text-sm text-white leading-relaxed">
+          <span class="text-base shrink-0">{index === 0 ? "🚀" : "🧠"}</span>
           <span>{bullet}</span>
         </div>
       {/each}
@@ -91,16 +91,14 @@
     {/if}
   </div>
 
-  <!-- Bottom Section: Tech Tags and CTAs -->
+  <!-- Bottom Section: Tech Stack and CTAs -->
   <div class="mt-auto pt-6 border-t border-white/15">
-    <!-- Tech Tags -->
-    <div class="flex flex-wrap gap-2 mb-4">
-      {#each project.tech as tag}
-        <span
-          class="px-3 py-1.5 bg-white/10 border border-white/20 rounded-full text-sm font-medium text-white/80 hover:text-white hover:border-white/30 transition-all"
-          >{tag}</span
-        >
-      {/each}
+    <!-- Tech Stack -->
+    <div class="mb-4">
+      <p class="text-xs font-bold text-white/50 uppercase tracking-wider mb-2">
+        Tech Stack
+      </p>
+      <p class="text-sm text-white/80">{project.tech.join(", ")}</p>
     </div>
 
     <!-- CTA Buttons -->
@@ -127,15 +125,6 @@
           Code <Github size={14} />
         </a>
       {/if}
-      {#if project.videoUrl}
-        <a
-          href={project.videoUrl}
-          target="_blank"
-          class="px-4 py-2 border border-white/25 text-white/80 font-semibold rounded-full hover:border-[#D9C4FF] hover:text-[#D9C4FF] hover:bg-[#D9C4FF]/10 transition-all flex items-center gap-2"
-        >
-          Walkthrough <Youtube size={14} />
-        </a>
-      {/if}
     </div>
   </div>
 </div>
@@ -150,6 +139,6 @@
   .project-card:hover {
     background-color: rgba(42, 36, 64, 0.7);
     border-color: rgba(217, 196, 255, 0.35);
-    box-shadow: 0 0 40px -10px rgba(217, 196, 255, 0.15);
+    box-shadow: 0 0 40px -10px rgba(217, 196, 255, 0.28);
   }
 </style>

@@ -1,5 +1,27 @@
 @import "tailwindcss";
 
+/* Design System - House Style */
+:root {
+  /* Backgrounds */
+  --bg-plum: #5b3a55;
+  --bg-plum-deep: #3b1f36;
+  --bg-indigo: #1f1b3a;
+  --bg-charcoal: #14141a;
+
+  /* Surfaces */
+  --card: rgba(255, 255, 255, 0.06);
+  --card-strong: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.12);
+
+  /* Text */
+  --text: rgba(255, 255, 255, 0.92);
+  --muted: rgba(255, 255, 255, 0.68);
+  --faint: rgba(255, 255, 255, 0.46);
+
+  /* Accent */
+  --accent: #B9A7FF; /* Periwinkle */
+}
+
 @theme {
   --font-serif: "Fraunces", "DM Serif Display", serif;
   --font-sans: "Inter", system-ui, sans-serif;
@@ -9,7 +31,6 @@
   --color-plum: #704367;
   --color-indigo: #493B66;
   --color-lavender-mist: #D9C4FF;
-  --color-lavender-outline: #FFF2FF;
 }
 
 @layer base {
@@ -19,6 +40,9 @@
 
   body {
     @apply font-sans antialiased text-white bg-charcoal;
+    hyphens: none;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
   }
 
   h1 {
@@ -42,34 +66,59 @@
   }
 }
 
+/* Section Base */
+section {
+  position: relative;
+  overflow: hidden;
+  color: var(--text);
+  padding-block: clamp(72px, 10vh, 120px);
+}
+
 /* Section Themes */
 .theme-charcoal {
-  background-color: var(--color-charcoal);
-  --section-text: #FFFFFF;
-  --section-muted: rgba(255, 255, 255, 0.7);
-  --section-border: rgba(255, 255, 255, 0.12);
-  --card-bg: rgba(255, 255, 255, 0.06);
+  background: var(--bg-charcoal);
 }
 
 .theme-plum {
-  background-color: var(--color-plum);
-  --section-text: #FFFFFF;
-  --section-muted: rgba(255, 255, 255, 0.7);
-  --section-border: rgba(255, 255, 255, 0.14);
-  --card-bg: rgba(255, 255, 255, 0.08);
+  background: var(--bg-plum);
+}
+
+.theme-plumDeep {
+  background: var(--bg-plum-deep);
 }
 
 .theme-indigo {
-  background-color: var(--color-indigo);
-  --section-text: #FFFFFF;
-  --section-muted: rgba(255, 255, 255, 0.7);
-  --section-border: rgba(255, 255, 255, 0.12);
-  --card-bg: rgba(255, 255, 255, 0.06);
+  background: var(--bg-indigo);
+}
+
+/* Glow Layer (only when enabled) */
+section.has-glow::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  background:
+    radial-gradient(900px 500px at 50% 10%, color-mix(in srgb, var(--accent) 28%, transparent), transparent 62%),
+    radial-gradient(700px 500px at 12% 88%, rgba(255, 120, 200, 0.12), transparent 60%),
+    radial-gradient(900px 600px at 88% 90%, rgba(120, 220, 255, 0.10), transparent 62%);
+  mix-blend-mode: screen;
+  filter: blur(2px);
+  opacity: 0.9;
+}
+
+/* Vignette Layer (always) */
+section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(1200px 700px at 50% 30%, transparent 55%, rgba(0, 0, 0, 0.42) 100%);
+  opacity: var(--vignette, 0.85);
 }
 
 .glass-card {
-  background-color: var(--card-bg);
-  border: 1px solid var(--section-border);
+  background-color: var(--card);
+  border: 1px solid var(--border);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   @apply rounded-[24px] p-6 transition-all duration-300;
@@ -82,13 +131,13 @@
 
 .pill {
   @apply px-3 py-1 rounded-full text-xs font-medium border transition-colors;
-  border-color: var(--section-border);
+  border-color: var(--border);
   background-color: rgba(255, 255, 255, 0.05);
 }
 
 .pill:hover {
-  border-color: var(--color-lavender-mist);
-  color: var(--color-lavender-mist);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 /* Animations */
@@ -142,7 +191,8 @@
 
 .text-outline {
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1.5px currentColor;
+  -webkit-text-stroke: 1px currentColor;
+  opacity: 0.8;
 }
 /* Micro-animations for Hero */
 @keyframes shimmer {
@@ -178,3 +228,17 @@
   animation: squish 0.2s ease-in-out;
 }
 
+/* Hero Vertical Stack */
+.hero-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.1rem;
+}
+
+@media (min-width: 768px) {
+  .hero-stack {
+    gap: 1.35rem;
+  }
+}

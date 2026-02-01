@@ -52,22 +52,22 @@ export const portfolioData = {
             featured: true,
             description: "Real-time collaborative whiteboard",
             oneLiner: "Fast, multiplayer canvas with sub-100ms sync and scalable room routing.",
-            signalStrip: ["Realtime", "Multiplayer", "Canvas", "Deployed"],
+            signalStrip: ["REAL-TIME", "Multiplayer", "Canvas", "Deployed"],
             impact: [
                 "Shipped real-time canvas sync via WebSockets, delivering smooth multi-user interactions.",
-                "Implemented room-based isolation using dynamic routes for independent sessions."
+                "Implemented global undo/redo shared across active users with action stream architecture."
             ],
             nextFeatures: ["Redis presence", "Live cursor", "Postgres persistence"],
             tech: ["Next.js", "TypeScript", "Canvas API", "NestJS", "WebSockets", "GCP"],
             demoUrl: "https://synapse-web-411490677881.us-central1.run.app/",
             githubUrl: "https://github.com/Vandu-Shre/synapse",
-            videoUrl: null,
+            videoUrl: "https://youtube.com/demo-synapse",
             thumbnail: "/Synapse.png"
         },
         {
             name: "Recipe Book",
             featured: true,
-            description: "Full Stack MERN application",
+            description: "Full-Stack MERN application",
             oneLiner: "Recipes, planning, pantry search, and secure authentication.",
             signalStrip: ["Auth", "Search", "Planning", "MERN"],
             impact: [
@@ -101,7 +101,7 @@ export const portfolioData = {
             company: "Ernst & Young (EY)",
             title: "Technology Consultant",
             period: "Aug 2022 - Jul 2024",
-            scale: "Real-time search · Sub-100ms sync · Global scale",
+            scale: "Real-time search · Sub-100ms sync",
             summary: "Built real-time journeys, dashboards, and scalable architecture for global commerce.",
             bullets: [
                 "Engineered a WebSocket + Redis auction app delivering sub-100ms interactions.",
@@ -123,7 +123,7 @@ export const portfolioData = {
                 "Built map-based Store Locator interfaces with Google Maps integration.",
                 "Designed the Offers & Promotions rules engine for contextual experiences."
             ],
-            tech: ["Node.js", "MongoDB", "React", "Express", "Google Maps API"]
+            tech: ["Node.js", "PostgreSQL", "React", "Express", "Google Maps API"]
         }
     ],
     skills: [
@@ -219,8 +219,8 @@ export const portfolioData = {
         },
         {
             title: "Real-time Systems",
-            desc: "Enabling instant collaboration via WebSockets + Redis.",
-            proof: "Synapse whiteboard action streams",
+            desc: "Instant collaboration via WebSockets and state sync.",
+            proof: "Synapse action streams + EY sub-100ms Redis auctions",
             link: "#synapse"
         },
         {
