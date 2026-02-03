@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { base } from "$app/paths";
   import { cn } from "$lib/utils";
   import Header from "$lib/components/Header.svelte";
   import Section from "$lib/components/Section.svelte";
@@ -451,7 +452,7 @@
 
         <!-- Download Resume Button -->
         <div class="mt-8">
-          <a href="/resume.pdf" download class={downloadBtnClasses}>
+          <a href={`${base}/resume.pdf`} download class={downloadBtnClasses}>
             <Download
               size={16}
               class="transition-transform group-hover:translate-y-0.5"
